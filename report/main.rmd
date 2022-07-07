@@ -22,7 +22,8 @@ header-includes:
 - \usepackage{indentfirst}
 - \usepackage[russian]{babel}
 ---
-\input{./title/title.tex}
+\input{./src/title.tex}
+\input{./src/safety.tex}
 \clearpage
 
 \tableofcontents
