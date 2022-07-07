@@ -23,25 +23,14 @@ header-includes:
 - \usepackage[russian]{babel}
 ---
 \input{./src/title.tex}
-\input{./src/safety.tex}
-\input{./src/plan.tex}
-\input{./src/feedback.tex}
+\input{./src/extra.tex}
 
-\clearpage
+\begin{center} 
+    {\Large Отчет студента}
+\end{center}
 
 \tableofcontents
+\clearpage
 
+# лова
 
-```{python}
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from lifelines import KaplanMeierFitter
-
-# read data
-data = pd.read_csv("../kaplan_meier_est/cancer.csv")
-data_top = data.head()
-
-plt.hist(data["sex"]) #shows hist for sex of patient
-plt.show()
-```
