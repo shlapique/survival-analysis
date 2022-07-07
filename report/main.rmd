@@ -24,6 +24,9 @@ header-includes:
 ---
 \input{./src/title.tex}
 \input{./src/safety.tex}
+\input{./src/plan.tex}
+\input{./src/feedback.tex}
+
 \clearpage
 
 \tableofcontents
