@@ -4,3 +4,7 @@
 \contentsline {subsubsection}{\numberline {1.1.1}Функция выживания (Survival function)}{3}{subsubsection.1.1.1}%
 \contentsline {subsubsection}{\numberline {1.1.2}Функция риска (Hazard function)}{3}{subsubsection.1.1.2}%
 \contentsline {subsubsection}{\numberline {1.1.3}Цензурирование (censoring)}{4}{subsubsection.1.1.3}%
+\contentsline {subsubsection}{\numberline {1.1.4}Медиана ожидаемого времени жизни (median number of survival days)}{4}{subsubsection.1.1.4}%
+\contentsline {subsubsection}{\numberline {1.1.5}Доверительный интервал (confidence interval)}{4}{subsubsection.1.1.5}%
+\contentsline {subsubsection}{\numberline {1.1.6}Усечение (truncation)}{4}{subsubsection.1.1.6}%
+\contentsline {subsubsection}{\numberline {1.1.7}Оценка Каплана --- Мейера, оценка Нельсона --- Аалена}{4}{subsubsection.1.1.7}%
