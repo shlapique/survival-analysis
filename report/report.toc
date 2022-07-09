@@ -7,8 +7,13 @@
 \contentsline {subsubsection}{\numberline {1.1.4}Медиана ожидаемого времени жизни (median number of survival days)}{4}{subsubsection.1.1.4}%
 \contentsline {subsubsection}{\numberline {1.1.5}Доверительный интервал (confidence interval)}{4}{subsubsection.1.1.5}%
 \contentsline {subsubsection}{\numberline {1.1.6}Усечение (truncation)}{4}{subsubsection.1.1.6}%
-\contentsline {subsubsection}{\numberline {1.1.7}Оценка Каплана --- Мейера, оценка Нельсона --- Аалена}{4}{subsubsection.1.1.7}%
-\contentsline {subsection}{\numberline {1.2}Пример решения задачи}{6}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}Проанализируем данные пола:}{6}{subsubsection.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.2}Применяем \emph {Оценку Каплана --- Мейера}}{7}{subsubsection.1.2.2}%
-\contentsline {subsubsection}{\numberline {1.2.3}Применяем \emph {Оценку Нельсона --- Аалена}}{9}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2}Непараметрические методы оценивания распределения длительностей}{4}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Оценка Каплана --- Мейера}{5}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Оценка Нельсона --- Аалена}{5}{subsubsection.1.2.2}%
+\contentsline {section}{\numberline {2}Пример решения задачи}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Проанализируем данные пола:}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Применяем \emph {Оценку Каплана --- Мейера}}{7}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Сделаем таблицу событий}{7}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Найдем вероятность выживания для каждого момента времени и вероятность с доверительным интервалом}{8}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Найдем медиану времени выживания}{8}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Применяем \emph {Оценку Нельсона --- Аалена}}{9}{subsection.2.3}%
