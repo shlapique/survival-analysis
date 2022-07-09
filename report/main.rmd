@@ -278,6 +278,10 @@ plt.xlabel("Кол-во дней")
 plt.ylabel("Вероятность смерти")
 plt.show()
 ```
+
+Видим полностью обратный график к вероятности выживания, что неудивительно, ведь кумул. ф-я плотности:
+
+$$F(t) = 1 - S(t)$$
 \pagebreak
 
 ## Применяем *Оценку Нельсона --- Аалена*
@@ -317,5 +321,89 @@ naf.plot_cumulative_hazard(label="Кумулятивная функция рис
 plt.xlabel("Кол-во дней")
 plt.show()
 ```
+
+## Анализ выживания для групп
+
+Сначала сравним выживаемость мужчин и женщин:
+
+```{python, results=FALSE, collapse=TRUE}
+kmfm = KaplanMeierFitter() # мужчины 
+kmff = KaplanMeierFitter() # женщины
+
+data.loc[data.sex == "male", "sex"] = 1 
+data.loc[data.sex == "female", "sex"] = 2 
+
+male = data.query("sex == 1")
+female = data.query("sex == 2")
+
+kmfm.fit(durations=male["time"], event_observed=male["status"], label="male")
+kmff.fit(durations=female["time"], event_observed=female["status"], label="female")
+
+# сделаем таблицы событий отдельно для м. и ж.
+kmfm.event_table
+kmff.event_table
+print(kmfm.event_table.head())
+print(kmff.event_table.head())
+```
+
+### Найдем вероятность выживания среди мужчин и женщин 
+
+```{python, results=FALSE, collapse=TRUE}
+kmfm.survival_function_
+kmff.survival_function_
+kmfm.plot()
+kmff.plot()
+plt.xlabel("Кол-во дней")
+plt.ylabel("Вероятность выживания")
+plt.show()
+```
+
+Несложно заметить, что вероятность выживания женщин выше, чем у мужчин. Однако такие выводы не совсем точны, т.к. мужчин много больше, чем женщин. Но до дня ~250 все равно вероятность у женщин выше.
+
+Получается, что кумулятивная плотность будет ниже у женщин
+
+```{python, results=FALSE, collapse=TRUE}
+kmfm.plot_cumulative_density()
+kmff.plot_cumulative_density()
+plt.title("Кумулятивная плотность")
+plt.xlabel("Кол-во дней")
+plt.ylabel("Вероятность")
+plt.show()
+```
+\pagebreak
+
+### Сравним кумулятивную плотность выживания с кумулятивной функцией риска
+
+мужчины:
+
+```{python, results=FALSE, collapse=TRUE}
+nafm = NelsonAalenFitter()
+nafm.fit(durations = data["time"], event_observed = data["status"])
+kmfm.plot_cumulative_density(label="Плотность мужчины")
+nafm.plot_cumulative_hazard(label="Риск мужчины")
+plt.xlabel("Кол-во дней")
+plt.show()
+```
+
+женщины:
+
+```{python, results=FALSE, collapse=TRUE}
+naff = NelsonAalenFitter()
+naff.fit(durations = data["time"], event_observed = data["status"])
+kmff.plot_cumulative_density(label="Плотность женщины")
+naff.plot_cumulative_hazard(label="Риск женщины")
+plt.xlabel("Кол-во дней")
+plt.show()
+```
+
+\Rightarrow с течением времени риск увеличивается.
+
+## Итоги
+
+Проанализровав выживаемость после заболевания CGD, можно сказать, что примерно за 1 год выроятность выживания становится равной 0. \Rightarrow чем больше времени проходит, тем больше смертельный риск.
+
+Анализ показал, что на нашей выборке у женщин немного больше шансов на выживание, нежели у мужчин. Анализировать действие лечебных препаратов, которые давали пациентам, не стал, т.к. это исключительно профилактическое-консервативное лечение, на пациентов с данным диагнозом практически не влияет.
+
+# Вывод
 
 
