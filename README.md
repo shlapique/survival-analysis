@@ -1,1 +1,2 @@
-# Survival Analysis project (monkeypox analysis)
+# Survival Analysis project (*Chronic Granulotomous Disease*)
+
