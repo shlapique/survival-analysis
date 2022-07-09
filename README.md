@@ -1,2 +1,2 @@
-# Survival Analysis project (*Chronic Granulotomous Disease*)
+# Survival Analysis project (*Chronic Granulomatous Disease*) 
 

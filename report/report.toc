@@ -15,5 +15,8 @@
 \contentsline {subsection}{\numberline {2.2}Применяем \emph {Оценку Каплана --- Мейера}}{7}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}Сделаем таблицу событий}{7}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}Найдем вероятность выживания для каждого момента времени и вероятность с доверительным интервалом}{8}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}Найдем медиану времени выживания}{8}{subsubsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.3}Применяем \emph {Оценку Нельсона --- Аалена}}{9}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.3}Найдем медиану времени выживания}{9}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Найдем вероятность смерти для \(\forall t\)}{10}{subsubsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.3}Применяем \emph {Оценку Нельсона --- Аалена}}{11}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Найдем риск для каждого момента времени и риск с доверительным интервалом}{11}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Сравним кумулятивную функцию риска и кумулятивную плотность \emph {(вероятность смерти)}:}{12}{subsubsection.2.3.2}%
