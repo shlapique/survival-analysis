@@ -174,6 +174,7 @@ $b_{i} = 1 \Rightarrow \exp{(b_{i})} = 0 \Rightarrow$ ковариат не ок
 $b_{i} < 1 \Rightarrow \exp{(b_{i})} = 0 \Rightarrow$ ковариат оказывает отрицательное влияние на риск $\Rightarrow$ положительно на время выживания.
 
 $b_{i} > 1 \Rightarrow \exp{(b_{i})} = 0 \Rightarrow$ ковариат оказывает положительно влияние на риск $\Rightarrow$ отрицательно на время выживания. 
+\pagebreak
 
 # Пример решения задачи
 
@@ -430,10 +431,67 @@ plt.show()
 
 $\Rightarrow$ с течением времени риск увеличивается.
 
+### Найдем зависимость вероятности выживания от возрастной группы
+
+```{python, results=FALSE, collapse=TRUE}
+from lifelines import CoxPHFitter
+data = pd.read_csv("cgd.csv")
+data = pd.read_csv("cgd.csv")
+data = data.drop("center", axis=1)
+data = data.drop("id", axis=1)
+data = data.drop("random", axis=1)
+data = data.drop("steroids", axis=1)
+data = data.drop("inherit", axis=1)
+data = data.drop("hos.cat", axis=1)
+data = data.drop("propylac", axis=1)
+data = data.drop("enum", axis=1)
+```
+Удалим из наших данных строки с нулевыми значениями
+
+```{python, results=FALSE, collapse=TRUE}
+data = data.dropna(subset=['sex', 'age', 'treat', 'height', 'weight', 'tstart', 'tstop', 'status'])
+```
+
+```{python, results=FALSE, collapse=TRUE}
+# возьмем объект из (раздела 2.2)
+data.loc[:, "time"] = data.loc[:, "tstop"] - data.loc[:, "tstart"] # time=tstop-tstart
+data.loc[data.sex == "male", "sex"] = 1
+data.loc[data.sex == "female", "sex"] = 2
+data.loc[data.treat == "placebo", "treat"] = 1
+data.loc[data.treat == "rIFN-g", "treat"] = 2
+kmf.fit(durations = data["time"], event_observed = data["status"])
+kmf.event_table
+data = data[['time', 'treat', 'age', 'height', 'weight', 'sex', 'status']]
+```
+
+```{python, results=FALSE, collapse=TRUE}
+cph = CoxPHFitter()
+cph.fit(data, "time", event_col="status")
+```
+
+![](src/img/summary.png)
+
+Мы знаем, что значение $р < 0.05$ считается статистически значимым. Здесь мы видим, что *age* имеет менее 0,05, *treat* --- $<0.005$. Поэтому рассмотрим группировку по возрасту и по "лекарству".
+
+Заметим, что значение *HR = exp(b)* для *age* равно 0.92, $\Rightarrow$ слабая зависимость риска смерти от пола пациента, т.к если остальные ковариаты = const, $\Rightarrow$ если вы женщина, то имеете на 8% меньше риск смерти, чем мужчины. Для *treat* ситуация такая, т.к *HR* равна 0.32, $\Rightarrow$ сильная зависимость риска смерти от вида лечения: пациенты, принимающие *rIFN-g*, имеют на 68% меньше риск смерти, нежели те, кому давали *placebo*.
+
+```{python}
+cph.plot()
+```
+
+```{python}
+print(data.iloc[10:15, :])
+```
+
+```{python}
+ddata = data.iloc[10:15, :]
+cph.predict_survival_function(ddata).plot()
+plt.show()
+```
+
 # Итог
 
 Проанализровав выживаемость после заболевания CGD, можно сказать, что примерно за 1 год выроятность выживания становится равной 0. $\Rightarrow$ чем больше времени проходит, тем больше смертельный риск.
 
 Анализ показал, что на нашей выборке у женщин немного больше шансов на выживание, нежели у мужчин. Анализировать действие лечебных препаратов, которые давали пациентам, не стал, т.к. это исключительно профилактическое-консервативное лечение, на пациентов с данным диагнозом практически не влияет.
-
 

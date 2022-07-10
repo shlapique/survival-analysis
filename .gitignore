@@ -4,3 +4,6 @@ nelson_aalen
 pox_analysis
 env
 *.swp
+*.csv#
+*.aux
+*.toc
